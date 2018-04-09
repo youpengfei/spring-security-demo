@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nio.showcase.securitydemo.dao.AuthorityDao">
+<mapper namespace="com.showcase.securitydemo.dao.AuthorityDao">
     <select id="getAuthByUserId" parameterType="long"
-            resultMap="com.nio.showcase.securitydemo.dao.base.BaseAuthorityDao.BaseResultMap">
+            resultMap="com.showcase.securitydemo.dao.base.BaseAuthorityDao.BaseResultMap">
         SELECT
-        <include refid="com.nio.showcase.securitydemo.dao.base.BaseAuthorityDao.Base_Column_List"/>
+        <include refid="com.showcase.securitydemo.dao.base.BaseAuthorityDao.Base_Column_List"/>
         from authority,user_role,role_authority
         where user_role.role_id=role_authority.role_id and authority.id=role_authority.authority_id and
         user_role.user_id=#{userId}
@@ -13,7 +13,7 @@
 
 
     <select id="getAuthByRoleId" parameterType="long"
-            resultMap="com.nio.showcase.securitydemo.dao.base.BaseAuthorityDao.BaseResultMap">
+            resultMap="com.showcase.securitydemo.dao.base.BaseAuthorityDao.BaseResultMap">
         SELECT
            auth.`id`,
            auth.`name`,
@@ -28,7 +28,7 @@
     </select>
 
 
-    <insert id="batchInsertIntoAuthRole" parameterType="com.nio.showcase.securitydemo.domain.UserRole">
+    <insert id="batchInsertIntoAuthRole" parameterType="com.showcase.securitydemo.domain.UserRole">
         INSERT INTO role_authority
         ( role_id,authority_id )
         VALUES
